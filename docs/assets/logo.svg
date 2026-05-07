@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" fill="none">
+  <!-- bra < -->
+  <path d="M10 10 L3 24 L10 38" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+  <!-- H -->
+  <text x="24" y="33" text-anchor="middle" font-size="26" font-weight="700" font-family="monospace" fill="white">H</text>
+  <!-- ket > -->
+  <path d="M38 10 L45 24 L38 38" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" opacity="0.45"/>
+  <!-- subscript D -->
+  <text x="36" y="37" font-size="11" font-weight="600" font-family="monospace" fill="white" opacity="0.75">D</text>
+</svg>

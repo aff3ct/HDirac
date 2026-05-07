@@ -1,0 +1,97 @@
+site_name: HDirac
+repo_url: https://github.com/aff3ct/HDirac
+repo_name: HDirac
+# extra:
+#   social:
+#     - icon: fontawesome/brands/gitlab
+#       link: https://github.com/aff3ct/HDirac
+theme:
+  name: material
+  logo: assets/logo.svg
+  favicon: assets/logo.svg
+  font:
+    text: IBM Plex Sans
+    code: IBM Plex Mono
+  palette:
+    # Light Mode (default)
+    - scheme: default
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+      primary: teal
+      accent: cyan
+
+    # Dark Mode
+    - scheme: slate
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+      primary: teal
+      accent: cyan
+
+  features:
+    - navigation.expand
+    - navigation.top
+    - navigation.path
+    - navigation.footer
+    - toc.follow
+    - content.code.copy
+    - content.code.annotate
+
+use_directory_urls: true
+
+markdown_extensions:
+  - attr_list
+  - md_in_html
+  - admonition
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      guess_lang: false
+      use_pygments: true
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.keys:
+      separator: +
+      strict: false
+      camel_case: false
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: >
+  MIT License © 2026 Exail - Sorbonne Université —
+  <a href="https://github.com/aff3ct/HDirac">HDirac</a>
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Build & Install: getting-started/build.md
+    - LDPC Codes: getting-started/ldpc-codes.md
+    - Getting .bsparse from Çil matrices: getting-started/create-bsparse.md
+    - Custom Channel: getting-started/custom-channel.md
+  - Simulation:
+    - Running the Simulation: simulation/running.md
+    - Pipeline & Sequence: simulation/modes.md
+    - Coding Schemes: simulation/coding-schemes.md
+  - Concepts:
+    - Householder Transformation: concepts/householder-transform.md
+
