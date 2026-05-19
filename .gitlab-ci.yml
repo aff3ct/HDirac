@@ -1,0 +1,100 @@
+# CI environment
+
+workflow:
+  auto_cancel:
+    on_new_commit: interruptible
+
+  rules:
+    - if: $CI_COMMIT_TITLE =~ /-draft$/ # add '-draft' to 1st commit message line end to ignore pipline
+      when: never
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+      when: never
+    - when : always
+
+stages:
+  - analysis
+  - build
+
+# default values
+
+default:
+  artifacts:
+    expire_in: 2 months
+  interruptible: true
+
+variables:
+  GIT_SUBMODULE_STRATEGY: none
+
+before_script:
+  - hostname
+  - whoami
+
+# generic configuraion for Linux
+
+.config-linux-tags:
+  tags:
+    - x86_64
+    - linux
+    - docker
+
+.config-common-linux:
+  extends: .config-linux-tags
+  before_script:
+    - hostname
+    - whoami
+
+###################
+## analysis jobs ##
+###################
+
+analysis-clang-format:
+  extends: .config-common-linux
+  stage: analysis
+  image: ubuntu:24.04
+  script:
+    - apt update
+    - apt -y install clang-format
+    - mkdir original_code
+    - cp -r include original_code
+    - cp -r src original_code
+    - find include -iname *.h -o -iname *.hpp -o -iname *.hxx | xargs clang-format -i
+    - find src -iname *.cpp -o -iname *.h -o -iname *.hpp -o -iname *.hxx | xargs clang-format -i
+    - mkdir new_code
+    - cp -r include new_code
+    - cp -r src new_code
+    - diff -r new_code original_code
+
+################
+## build jobs ##
+################
+
+.build-linux:
+  extends: .config-common-linux
+  stage: build
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+  script:
+    - source ./ci/tools/threads.sh
+    - ./ci/build-linux-macos.sh
+
+# GCC
+# ---
+
+.build-linux-gcc:
+  extends: .build-linux
+  variables:
+    CC: 'gcc'
+    CXX: 'g++'
+
+build-linux-gcc-x64-avx2:
+  extends: .build-linux-gcc
+  image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_gcc:v9.3.0
+  artifacts:
+    name: build-linux-gcc-x64-avx2
+    paths:
+      - ${NAME}
+  variables:
+    CFLAGS: -Wall -funroll-loops -m64 -mavx2 -mfma
+    LFLAGS: -static -static-libgcc -static-libstdc++ -Wl,--whole-archive -lrt -lpthread -Wl,--no-whole-archive
+    CMAKE_OPT: -DSPU_TESTS=ON -DSPU_COMPILE_STATIC_LIB=ON -DSPU_COMPILE_SHARED_LIB=ON -DSPU_STACKTRACE=OFF -DSPU_OVERRIDE_VERSION=$GIT_TAG
+    NAME: build_linux_gcc_x64_avx2
