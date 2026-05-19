@@ -80,8 +80,8 @@ add_executable(create_bsparse_from_cil
 
 # Create a list of all targets to apply settings to all of them at once
 set(ALL_TARGETS
-    create_bsparse_from_cil
     HDirac
+    create_bsparse_from_cil
 )
 
 target_include_directories(CVQKD-obj PRIVATE 

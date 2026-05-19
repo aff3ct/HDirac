@@ -71,9 +71,6 @@ rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 cd $NAME;
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 
-pwd;
-ls -lia;
-
 cmake .. -G"Unix Makefiles" -DCMAKE_CXX_COMPILER=$CXX \
          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
          -DCMAKE_CXX_FLAGS="$CFLAGS" \
