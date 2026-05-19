@@ -2,8 +2,6 @@
 set -x
 
 cmake --version
-mkdir build
-cd build
 
 if [ -z "$CXX" ]
 then
@@ -35,9 +33,6 @@ fi
 # make install > /dev/null
 # rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
 # mv $NAME ../
-
-pwd;
-ls -lia;
 
 cd lib/aff3ct;
 rc=$?; if [[ $rc != 0 ]]; then exit $rc; fi
