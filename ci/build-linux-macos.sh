@@ -2,8 +2,6 @@
 set -x
 
 cmake --version
-mkdir build
-cd build
 
 if [ -z "$CXX" ]
 then
