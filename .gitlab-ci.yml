@@ -23,7 +23,7 @@ default:
   interruptible: true
 
 variables:
-  GIT_SUBMODULE_STRATEGY: none
+  GIT_SUBMODULE_STRATEGY: recursive
 
 before_script:
   - hostname
