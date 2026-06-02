@@ -30,7 +30,7 @@ As well as being used independently, the project can also serve as a library. Us
 
 ## Publication
 
-HDirac is the open-source simulation framework presented in our paper [Multidimensional Reconciliation in Continuous-Variable QKD: Review, Coding Schemes, and Open Source Simulation](dead-link). Below is an excerpt from the introduction.
+HDirac is the open-source simulation framework presented in our paper [Multidimensional Reconciliation in Continuous-Variable QKD: Review, Coding Schemes, and Open Source Simulation](https://arxiv.org/abs/2606.02323). Below is an excerpt from the introduction.
 
 !!! quote ""
     Multidimensional reconciliation has become the method of choice for long-distance CV-QKD. [...] It transforms the physical quantum channel into a virtual channel that approximates a Binary Input Additive White Gaussian Noise (BIAWGN) channel, enabling the use of modern error-correcting codes. [...]
