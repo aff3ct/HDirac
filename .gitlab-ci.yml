@@ -14,6 +14,7 @@ workflow:
 stages:
   - analysis
   - build
+  - test
 
 # default values
 
@@ -99,3 +100,36 @@ build-linux-gcc-x64-avx2:
     LFLAGS: -static -static-libgcc -static-libstdc++ -Wl,--whole-archive -lrt -lpthread -Wl,--no-whole-archive
     CMAKE_OPT: -DSPU_TESTS=OFF -DSPU_COMPILE_STATIC_LIB=ON -DSPU_COMPILE_SHARED_LIB=ON -DSPU_STACKTRACE=ON -DSPU_OVERRIDE_VERSION=$GIT_TAG
     NAME: build_linux_gcc_x64_avx2
+
+################
+## test jobs  ##
+################
+
+.test-linux:
+  extends: .config-common-linux
+  stage: test
+  variables:
+    GIT_SUBMODULE_STRATEGY: recursive
+  image: registry.gitlab.com/aff3ct/aff3ct/x86_64_ubuntu_python:v3.8.5
+
+test-regression:
+  extends: .test-linux
+  needs:
+    - job: build-linux-gcc-x64-avx2
+      artifacts: true
+  artifacts:
+    name: test-regression-results
+    when: always
+    paths:
+      - test-regression-results/
+  script:
+    - chmod +x ./ci/test-regression.py
+    - source ./ci/tools/threads.sh
+    - ./ci/test-regression.py
+        --refs-path     ci/error_rate_references/LDPC/coset/householder_od2/sequence
+        --results-path  test-regression-results
+        --build-path    build_linux_gcc_x64_avx2
+        --binary-path   bin/HDirac
+        --sensibility 1
+        --weak-rate 0.9
+        --verbose 1
