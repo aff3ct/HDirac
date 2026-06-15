@@ -11,8 +11,8 @@ Quantum_channel<T>::Quantum_channel(const size_t n,
                                     const float signal_variance)
   : Stateful()
   , n(n)
-  , normal_gen(normal_gen.clone())
   , signal_variance(signal_variance)
+  , normal_gen(normal_gen.clone())
 {
     const std::string name = "Quantum_channel";
     this->set_name(name);
