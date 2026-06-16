@@ -11,6 +11,7 @@
 === "HTTPS"
 
     ```bash
+    cd HDirac
     git clone https://github.com/aff3ct/HDirac.git
     ```
 
@@ -30,7 +31,7 @@ Compile the library on Linux/MacOS/MinGW/WSL:
 cd lib/aff3ct
 mkdir build
 cd build
-cmake .. -G"Unix Makefiles"
+cmake .. -G"Unix Makefiles" \
          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
          -DCMAKE_CXX_FLAGS="-Wall -funroll-loops -march=native" \
          -DAFF3CT_COMPILE_EXE="OFF" \
@@ -69,7 +70,7 @@ Compile the code on Linux/MacOS/MinGW/WSL:
 ```bash
 mkdir build
 cd build
-cmake .. -G"Unix Makefiles" 
+cmake .. -G"Unix Makefiles" \
          -DCMAKE_BUILD_TYPE=RelWithDebInfo \
          -DCMAKE_CXX_FLAGS="-Wall -funroll-loops -march=native" \
          -DAFF3CT_DIR=$(pwd)/../aff3ct_install/lib/cmake/aff3ct \
