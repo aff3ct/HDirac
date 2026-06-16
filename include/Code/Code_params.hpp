@@ -1,6 +1,7 @@
 #ifndef CODE_PARAMS_HPP_
 #define CODE_PARAMS_HPP_
 
+#include <cstdint>
 #include <iostream>
 #include <memory>
 #include <vector>
