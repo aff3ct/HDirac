@@ -11,7 +11,6 @@
 === "HTTPS"
 
     ```bash
-    cd HDirac
     git clone https://github.com/aff3ct/HDirac.git
     ```
 
@@ -22,6 +21,7 @@
 Get the AFF3CT library:
 
 ```bash
+cd HDirac
 git submodule update --init --recursive
 ```
 
