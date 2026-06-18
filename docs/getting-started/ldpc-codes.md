@@ -5,7 +5,10 @@
 The LDPC codes used in our examples are publicly available in the [repository by Erdem Ray Çil and Laurent Schmalen](https://github.com/erdemeray/IR_for_CVQKD).
 
 Before using these codes, please review the license of the original repository.
-To reproduce our simulations, download the codes and build with _create_bsparse_from_cil_ a **.bsparse** file with the desired code rate and quasi-cyclic expansion factor. See _install_cil.sh_ for an example script.
+To reproduce our simulations, download the codes and build with _create_bsparse_from_cil_ a **.bsparse** file with the desired code rate and quasi-cyclic expansion factor.
+
+!!! tip
+    See _install_cil.sh_ for an example of a script that can be used to obtain the initial matrices.
 
 See the [create_bsparse_from_cil reference](create-bsparse.md) for full usage.
 

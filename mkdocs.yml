@@ -90,6 +90,7 @@ nav:
     - Custom Channel: getting-started/custom-channel.md
   - Simulation:
     - Running the Simulation: simulation/running.md
+    - Available Combinations: simulation/combinations.md
     - Pipeline & Sequence: simulation/modes.md
     - Coding Schemes: simulation/coding-schemes.md
   - Concepts:

@@ -41,7 +41,7 @@ where:
 \vec{v} = \vec{b}' - \vec{u_s}.
 \]
 
-This transformation reflects $\vec{b}'$ onto $\vec{u}$.
+This transformation reflects $\vec{b}'$ onto $\vec{u_s}$.
 
-### 6. Final Rotation Matrix
+### 6. Final Random Orthogonal Matrix
 By composing the random rotation and the Householder reflection, Bob obtains a single orthogonal matrix that maps the original $\vec{b}$ to $\vec{u_s}$.

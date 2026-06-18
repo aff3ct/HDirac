@@ -1,5 +1,8 @@
 # Getting .bsparse from Çil matrices
 
+!!! tip
+    See _install_cil.sh_ for an example of a script that can be used to obtain the initial matrices.
+
 `create_bsparse_from_cil` is a build tool that converts a CIL matrix file from the
 [Çil & Schmalen repository](https://github.com/erdemeray/IR_for_CVQKD) into a `.bsparse`
 file ready to be consumed by the simulator. It optionally applies a target code rate and

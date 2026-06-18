@@ -40,22 +40,16 @@ Path to the LDPC code file in `.bsparse` format. See [LDPC Codes](../getting-sta
  
 Select the virtual channel model to simulate.
  
-| Value | Description |
-|---|---|
-| `biawgn` | Binary input additive white Gaussian noise $-$ ideal limit as \(d \to \infty\) |
-| `real` | CVQKD virtual channel, real-valued (\(d=1\)) |
-| `complex` | CVQKD virtual channel, complex (\(d=2\)) |
-| `quaternion` | CVQKD virtual channel, quaternion (\(d=4\)) |
-| `octonion` | CVQKD virtual channel, octonion (\(d=8\)) |
-| `householder_od2` | Householder-based virtual channel with \(O(d^2)\) complexity |
-| `householder_od3` | Householder-based virtual channel with \(O(d^3)\) complexity |
- 
-!!! tip "Aliases"
-    `quat` = `quaternion`  
-    `oct`  = `octonion`  
-    `hod2` = `householder_od2`  
-    `hod3` = `householder_od3`  
- 
+| CLI value | Alias | Description |
+|------------|--------|-------------|
+| `biawgn` | - | Binary-input AWGN channel |
+| `real` | - | CVQKD virtual channel (d = 1) |
+| `complex` | - | CVQKD virtual channel (d = 2) |
+| `quaternion` | `quat` | CVQKD virtual channel (d = 4) |
+| `octonion` | `oct` | CVQKD virtual channel (d = 8) |
+| `householder_od2` | `hod2` | Householder virtual channel with O(d²) complexity |
+| `householder_od3` | `hod3` | Householder virtual channel with O(d³) complexity |
+
 ---
  
 #### Coding sheme `--decoder` <span class="badge-optional">OPTIONAL</span> { data-toc-label="Coding sheme" }
@@ -68,18 +62,14 @@ Select the virtual channel model to simulate.
 | **Example** | `--decoder coset` |
  
 Select the coding scheme.
- 
-| Value | Description |
-|---|---|
-| `coset` | Standard coset decoder $-$ decodes toward a given syndrome |
-| `coset_synd` | Coset decoder with syndrome concatenation $-$ for performance comparison only |
- 
-!!! tip "Alias"
-    `cs` = `coset_synd`
+
+| CLI value | Alias | Description |
+|------------|--------|-------------|
+| `coset` | - | Standard coset decoder $-$ decodes toward a given syndrome |
+| `coset_synd` | `cs` | Coset decoder with syndrome concatenation $-$ for performance comparison only |
  
 !!! warning
-    `coset_synd` is not intended for practical use. It is only available with `biawgn`,  
-    regardless of the mode (`sequence` or `pipeline`).
+    The `coset_synd` decoder is intended only for performance comparison and is only available with the `biawgn` channel.
  
 ---
  
@@ -113,6 +103,20 @@ Select the execution mode. See [Pipeline & Sequence](modes.md) for a detailed ex
 | **Type** | integer |
 | **Default** | `64` |
 | **Example** | `--d 128` |
+
+The `--d` parameter is only used with:
+
+- `householder_od2`
+- `householder_od3`
+
+For the low-dimensional virtual channels, the dimension is fixed automatically:
+
+| Channel | Dimension |
+|----------|-----------|
+| `real` | 1 |
+| `complex` | 2 |
+| `quaternion` | 4 |
+| `octonion` | 8 |
 
 !!! note
     The dimension \(d\) of the CVQKD virtual channel. Required to be `> 0` for `householder_od2` and `householder_od3` channels. Must divide the frame length \(n\) evenly — see [Choose of the Code Rate](../getting-started/ldpc-codes.md#choose-of-the-code-rate).
