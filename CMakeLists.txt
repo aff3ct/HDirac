@@ -53,6 +53,8 @@ set(THREADS_PREFER_PTHREAD_FLAG ON)
 find_package(Threads REQUIRED)
 find_package(cpptrace CONFIG 0.4.1)
 find_package(AFF3CT CONFIG 4.2.0 REQUIRED)
+# if AFF3CT already includes StreamPU the following line is useless
+find_package(StreamPU CONFIG 1.9.2)
 
 # --------------------------------------------------------------------------#
 #                               DEFINE TARGETS                              #
