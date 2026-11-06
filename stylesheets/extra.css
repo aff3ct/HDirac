@@ -1,0 +1,147 @@
+/* ── Hero grid on the index page ── */
+.hero-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.hero-card {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 1.2rem 1.4rem;
+  background: var(--md-code-bg-color);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.hero-card:hover {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ── Navigation quick-links grid ── */
+.nav-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.nav-grid p {
+  border: 1px solid var(--md-default-fg-color--lightest);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin: 0;
+  background: var(--md-code-bg-color);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.nav-grid p:hover {
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* ── Admonitions ── */
+.md-typeset .admonition,
+.md-typeset details {
+  border-width: 0 0 0 4px;
+  border-style: solid;
+  border-radius: 0 8px 8px 0;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  font-size: .85rem;
+}
+
+.md-typeset .admonition-title,
+.md-typeset summary {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: .75rem;
+}
+
+/* ── Headings ── */
+.md-typeset h1 {
+  font-weight: 700;
+  letter-spacing: -0.4px;
+}
+
+.md-typeset h2 {
+  font-weight: 600;
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  padding-bottom: .3rem;
+}
+
+
+
+
+
+
+
+
+
+.badge-required, .badge-optional, .badge-help {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  vertical-align: middle;
+  margin-left: 0; /* handled by flex gap */
+}
+
+.badge-required { background-color: #d9534f; color: white; }
+.badge-optional { border: 1px solid var(--md-default-fg-color--lightest); color: var(--md-default-fg-color--light); }
+.badge-help { background-color: #3f51b5; color: white; }
+
+
+.md-typeset h4 {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+
+
+
+
+
+
+
+
+.cli-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.cli-table td {
+  border: none !important;
+  padding: 8px 4px !important;
+}
+
+.cli-table td:first-child {
+  width: 120px;
+  font-weight: 700;
+}
+
+
+
+
+
+
+
+
+
+
+.md-nav__list .md-nav__list {
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid var(--md-default-fg-color--lightest);
+}
+
+
+img.centered {
+  display: block;
+  margin: 0 auto;
+}
