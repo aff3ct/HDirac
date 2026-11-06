@@ -39,3 +39,5 @@ simulation_raw_outputs/
 figures/
 src/tmp_binary/
 venv/
+
+*.dot

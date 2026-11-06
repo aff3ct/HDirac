@@ -193,6 +193,14 @@ generate_random_orthogonal_matrices(const size_t sub_vec_length,
         _QR.compute(_A);
         // Orthogonal matrix (Q) extraction
         _QR.householderQ().evalTo(_Q_out);
+
+        // Sign correction based on the diagonal entries of R
+        // The determinant of Q is therefore uniformly distributed over {-1, +1}
+        // This ensures that Q is a Haar-distributed random orthogonal matrix over O(d)
+        for (size_t j = 0; j < d; j++)
+        {
+            if (_QR.matrixQR()(j, j) < 0.0) _Q_out.col(j) *= -1.0;
+        }
     }
 }
 
